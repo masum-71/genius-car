@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import image from "../../assets/images/login/login.svg";
 
-const Login = () => {
-  const handleLogin = (event) => {
+const SignUp = () => {
+  const handleSignup = (event) => {
     event.preventDefault();
   };
   return (
@@ -11,9 +11,20 @@ const Login = () => {
       <div className="hero-content flex-col lg:flex-row-reverse justify-between">
         <div className="card  w-full shadow-2xl bg-base-100">
           <div className="text-center">
-            <h1 className="text-3xl text-center font-bold">Login now!</h1>
+            <h1 className="text-3xl text-center font-bold">Sign Up!</h1>
           </div>
-          <form onSubmit={handleLogin} className="card-body">
+          <form onSubmit={handleSignup} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="name"
+                name="name"
+                className="input input-bordered"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -37,20 +48,19 @@ const Login = () => {
                 required
                 className="input input-bordered"
               />
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </form>
           <p className="text-center mb-4">
-            New to Genius Car ?{" "}
-            <Link to="/signup" className="text-orange-600 font-bold">
-              Sign Up
+            Already Have An Account ?{" "}
+            <Link to="/login" className="text-orange-600 font-bold">
+              Login
             </Link>{" "}
           </p>
         </div>
@@ -62,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
