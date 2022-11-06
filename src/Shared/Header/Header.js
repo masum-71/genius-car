@@ -4,7 +4,14 @@ import logo from "../../assets/logo.svg";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .then(() => {});
+  };
+
   const menuItem = (
     <>
       <li className="font-semibold">
@@ -15,6 +22,11 @@ const Header = () => {
           <li className="font-semibold">
             <Link to="/orders">Orders</Link>
           </li>
+          <li className="font-semibold">
+            <button onClick={handleLogout} className="btn-ghost">
+              Sign Out
+            </button>
+          </li>
         </>
       ) : (
         <li className="font-semibold">
@@ -23,11 +35,12 @@ const Header = () => {
       )}
     </>
   );
+
   return (
     <div className="navbar h-20 bg-base-100 mb-20">
       <div className="navbar-start">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <label tabIndex={0} className="btn btn-ghost md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -54,7 +67,7 @@ const Header = () => {
           <img src={logo} alt="" />
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
       </div>
       <div className="navbar-end">
